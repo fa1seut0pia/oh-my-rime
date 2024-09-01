@@ -1,0 +1,32 @@
+patch:
+  "switches/@0/reset": 1  #表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）。
+  "ascii_composer/good_old_caps_lock": true
+  "ascii_composer/switch_key":
+    Caps_Lock: commit_code
+    Control_L: noop # 不做任何操作
+    Control_R: noop # 不做任何操作
+    Shift_L: noop # 与IDEA快捷键冲突,所以不做任何操作
+    Shift_R: noop # 不做任何操作
+  "menu/page_size": 9
+  schema_list:
+    - {schema: rime_mint} # 薄荷拼音
+    # - {schema: terra_pinyin} # 地球拼音-薄荷定制
+  "switcher/hotkeys":
+    - "Control+grave"
+  "switcher/save_options":
+    - full_shape
+    - ascii_punct
+    - simplification
+    - zh_hans
+    - emoji_suggestion
+  "translator/enable_encoder": true
+  "translator/enable_sentence": true
+  "translator/enable_user_dict": true
+  "translator/encode_commit_history": true
+
+  key_binder:
+    import_preset: default
+    bindings:
+      - { accept: "Control+space", toggle: ascii_mode, when: always} # 切換中英文, 与Windows习惯保持一致
+      - { accept: minus, send: Page_Up, when: paging }     # 使用`-`进行向上翻页（第一页时候无效）
+      - { accept: equal, send: Page_Down, when: has_menu } # 使用`=`进行向下翻页
